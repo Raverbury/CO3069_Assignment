@@ -32,3 +32,5 @@ All things that should be modified are defined in config.py. From the example_co
 
 ## Notes
 It is obvious that ```python defacecheck.py update``` must be executed before ```python defacecheck.py run``` based on commonsense or it will throw some errors that I can't be bothered to label.
+
+Use python/python3 and pip/pip3 based on your OS.
