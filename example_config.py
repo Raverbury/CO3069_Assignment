@@ -21,3 +21,8 @@ ADAFRUIT_IO_USERNAME = !MISSING
 """The Adafruit username to use in AdafruitIODriver"""
 ADAFRUIT_IO_KEY = !MISSING
 """The Adafruit key to use in AdafruitIODriver"""
+
+DIFF_THRESHOLD = 0.9
+"""The minimum threshold value for direct response comparison before it is considered to have been changed"""
+RESPONSECHECK_URL = 'http://jobseeker.localhost'
+"""The website to check using response comparison"""
