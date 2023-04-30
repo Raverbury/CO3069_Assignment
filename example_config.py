@@ -24,5 +24,5 @@ ADAFRUIT_IO_KEY = !MISSING
 
 DIFF_THRESHOLD = 0.9
 """The minimum threshold value for direct response comparison before it is considered to have been changed"""
-RESPONSECHECK_URL = 'http://jobseeker.localhost'
+RESPONSECHECK_URL = !MISSING
 """The website to check using response comparison"""
