@@ -16,7 +16,8 @@ def send_alert_email():
 
     We are writing to inform you that our application has detected changes on your website. This could be the result of a deface attack attempt on your website.
 
-    If you did not make those changes, please update the hashes of the website content.
+    If you did not make those changes, consider your website a victim of a deface attack and use a backup to restore it to a healthy state.
+    If you did make those changes, consider updating the known state of your website and restart the detection program.
 
     Thank you for your attention to this matter.
 

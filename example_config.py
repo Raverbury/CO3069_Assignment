@@ -11,12 +11,13 @@ SCAN_INTERVAL = 1
 
 BLACKLIST = [r".git"]
 """Directories to ignore"""
-DIR_PATH = r"C:\xampp\htdocs\jobseeker"
+DIR_PATH = r"path/to/server/directory"
 """Path to the server directory"""
 
 IO_DRIVER = "file"
 """The IO driver to use to store hashes. Accepted values: 'file', 'adafruit'"""
 
+"""Adafruit IO is free to use, consider creating your own account and use your own credentials"""
 ADAFRUIT_IO_USERNAME = !MISSING
 """The Adafruit username to use in AdafruitIODriver"""
 ADAFRUIT_IO_KEY = !MISSING
