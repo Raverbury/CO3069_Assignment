@@ -10,18 +10,43 @@ from modules.io_driver import *
 from modules.mailer import *
 import config
 
+from selenium import webdriver
+
 URL = config.RESPONSECHECK_URL
 driver: IODriver = None
 
+
+def get_browser():
+    print('Creating a headless browser instance, this could take a while...')
+    if config.BROWSER == "firefox":
+        options = webdriver.firefox.options.Options()
+        options.add_argument('--headless')
+        driver = webdriver.Firefox(options=options)
+    elif config.BROWSER == "chrome":
+        options = webdriver.chrome.options.Options()
+        options.add_argument('--headless')
+        driver = webdriver.Chrome(options=options)
+    elif config.BROWSER == "edge":
+        options = webdriver.edge.options.Options()
+        options.add_argument('--headless')
+        driver = webdriver.Edge(options=options)
+    else:
+        raise Exception('Unsupported browser')
+    return driver
+
+
 def get_response_text(URL):
+    driver = get_browser()
     try:
-        response = requests.get(URL)
-        if response.status_code != 200:
-            raise Exception(f"Request returned with status {response.status_code}")
-        text = response.text
+        driver.get(URL)
+        while driver.execute_script('return document.readyState') != 'complete':
+            pass
+        text = driver.page_source
         return text
     except Exception as e:
         raise e
+    finally:
+        driver.quit()
 
 
 def has_changed(new, original):
@@ -69,16 +94,18 @@ def check():
 
     new_response = get_response_text(URL)
     old_response = driver.read_from()
-    
+
     v_has_changed, similarity = has_changed(new_response, old_response)
     if v_has_changed:
         print(f"[{datetime.now()}] Scan finished, changes detected")
-        print(f"[{datetime.now()}] Similarity of {similarity}, minimum threshold was {config.DIFF_THRESHOLD}")
+        print(
+            f"[{datetime.now()}] Similarity of {similarity}, minimum threshold was {config.DIFF_THRESHOLD}")
         send_alert_email()
         exit()
     else:
         print(f"[{datetime.now()}] Scan finished, no changes found")
-        print(f"[{datetime.now()}] Similarity of {similarity}, minimum threshold was {config.DIFF_THRESHOLD}")
+        print(
+            f"[{datetime.now()}] Similarity of {similarity}, minimum threshold was {config.DIFF_THRESHOLD}")
 
 
 def update():

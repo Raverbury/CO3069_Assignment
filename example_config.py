@@ -22,6 +22,9 @@ ADAFRUIT_IO_USERNAME = !MISSING
 ADAFRUIT_IO_KEY = !MISSING
 """The Adafruit key to use in AdafruitIODriver"""
 
+BROWSER = 'firefox'
+"""The selenium driver to use in response checking. Accepted values: 'firefox', 'chrome', 'edge'. This also relies on the browsers installed on the system"""
+
 DIFF_THRESHOLD = 0.9
 """The minimum threshold value for direct response comparison before it is considered to have been changed"""
 RESPONSECHECK_URL = !MISSING

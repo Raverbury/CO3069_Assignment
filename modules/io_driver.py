@@ -10,20 +10,20 @@ class IODriver:
         pass
 
 
-FILE_NAME = "output.json"
+FILE_NAME = "output.txt"
 
 class FileDriver(IODriver):
     def __init__(self):
         self.file_name = FILE_NAME
 
     def read_from(self):
-        with open(self.file_name, "r") as f:
+        with open(self.file_name, "r", encoding="utf-8") as f:
             data = f.read()
             f.close()
         return data
 
     def write_to(self, data):
-        with open(self.file_name, "w") as f:
+        with open(self.file_name, "w", encoding="utf-8") as f:
             f.write(data)
             f.close()
 

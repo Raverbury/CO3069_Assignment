@@ -1,3 +1,5 @@
 config.py
 output.json
+output.txt
 **/__pycache__
+geckodriver.log
