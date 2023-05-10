@@ -21,7 +21,7 @@ python defacecheck.py run
 runs the program indefinitely, every once in a while recalculates the hashes and verifies with the previous hashes that nothing has been changed. If something has been added, removed or modified, an alert email is sent to the configured recipient and the program terminates, at which point it is up to the user to take actions (restoring their files to their backup states, updating the hashes, restarting the program,...).
 
 ## Direct response text comparison
-HTTP response initially contains raw text that is rendered into actual UI by the browser. Prior to that, we have the raw response text that we can use to perform checks on, similar to the checksums above. If a text is similar enough to the known, trusted state of the website, an alert is not raised.
+HTTP response initially contains raw text that is rendered into actual UI by the browser. After being rendered, we can grab the page's source that we can use to perform checks on, similar to the checksums above. If the source is similar enough to the known, trusted state of the website, an alert is not raised.
 
 ### Usage
 ```
